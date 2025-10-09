@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:PdfFormFramework.Controls;assembly=PdfFormFramework"
+    xmlns:models="clr-namespace:PdfFormDemo.Models;assembly=PdfFormDemo"
+    x:Class="PdfFormDemo.MainPage"
+    BackgroundColor="White">
+
+    <Grid
+        RowDefinitions="*,Auto">
+        <!-- PDF Form View -->
+        <Border
+            Grid.Row="0"
+            BackgroundColor="White"
+            Stroke="Gray"
+            StrokeThickness="1"
+            Margin="5">
+            <controls:PdfInteractiveFormView
+                x:Name="FormView"
+                x:TypeArguments="models:ApplicationForm"
+                HeightRequest="600"
+                BackgroundColor="White" />
+        </Border>
+
+        <!-- Buttons -->
+        <HorizontalStackLayout
+            Grid.Row="1"
+            Padding="10"
+            Spacing="10"
+            HorizontalOptions="Center">
+            <Button
+                Text="Save Data"
+                Clicked="OnSaveClicked" />
+            <Button
+                Text="Print"
+                Clicked="OnPrintClicked" />
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>
