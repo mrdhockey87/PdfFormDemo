@@ -29,10 +29,11 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
-
+	
 	<ItemGroup>
-		<ProjectReference Include="..\PdfFormFramework\PdfFormFramework.csproj" />
+		<ProjectReference Include="..\..\PdfFormFramework\PdfFormFramework\PdfFormFramework.csproj" />
 	</ItemGroup>
+
 	
 	<ItemGroup>
 		<!-- App Icon -->

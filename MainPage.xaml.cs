@@ -49,7 +49,7 @@ public partial class MainPage : ContentPage
             Debug.WriteLine($"Loading PDF from path: {pdfPath}");
 
             // Set a loading indicator
-            await DisplayAlert("Loading", "Loading PDF form...", "OK");
+            //await DisplayAlert("Loading", "Loading PDF form...", "OK");
 
             // Load the PDF
             FormView.LoadPdfGz(pdfPath, model);
