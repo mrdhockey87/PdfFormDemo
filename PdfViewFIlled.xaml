@@ -19,7 +19,7 @@
             Margin="5">
             <controls:PdfInteractiveFormView
                 x:Name="FormView"
-                x:TypeArguments="models:ApplicationForm"
+                x:TypeArguments="models:PdfFormData"
                 HeightRequest="600"
                 BackgroundColor="White" />
         </Border>

@@ -1,6 +1,8 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.VisualBasic.FileIO;
+using PdfFormDemo.Enums;
+using PdfFormDemo.Extensions;
 using System.Collections.ObjectModel;
 
 namespace PdfFormDemo.Models;
@@ -21,10 +23,8 @@ public partial class PdfFormData : ObservableObject
     private string _zipCode = "";
     [ObservableProperty]
     private string _city = "";
-    [ObservableProperty]
-    private string _country = "";
-    [ObservableProperty]
-    private ObservableCollection<string> _gender;
+    public Country? Country { get; set; }
+    public Gender? Genders { get; set; }
     [ObservableProperty]
     private string _height = "";
     [ObservableProperty]
@@ -39,12 +39,41 @@ public partial class PdfFormData : ObservableObject
     private bool _spanish = false;
     [ObservableProperty]
     private bool _latin = false;
-    [ObservableProperty]
-    private ObservableCollection<string> _favouriteColor;
+    public FavouriteColor? FavouriteColors { get; set; }
+    public string GetCountryString() => Country?.ToDisplayString() ?? string.Empty;
+    // Selected string values for binding
+    public string GetGenderString() => Genders?.ToDisplayString() ?? string.Empty;
+
+    public string GetFavouriteColorString() => FavouriteColors?.ToDisplayString() ?? string.Empty;
+    private string _selectedCountry { set; get; }
+    public string SelectedCountry
+    {
+        get => _selectedCountry;
+        set
+        {
+            _selectedCountry = value;
+        }
+    }
+    private string _selectedGender { set; get; }
+    public string SelectedGender
+    {
+        get => _selectedGender;
+        set
+        {
+            _selectedGender = value;
+        }
+    }
+    private string _selectedColor { set; get; }
+    public string SelectedColor
+    {
+        get => _selectedColor;
+        set
+        {
+            _selectedColor = value;
+        }
+    }
 
     public PdfFormData()
     {
-        Gender = ["Male", "Female"];
-        FavouriteColor = ["Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Violet", "Gery", "White"];
     }
 }

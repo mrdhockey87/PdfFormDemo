@@ -10,17 +10,8 @@ namespace PdfFormDemo;
 
 public partial class MainPage : ContentPage, INotifyPropertyChanged
 {
-    //private PdfFormData _pdfFormData;
-    public PdfFormData _pdfFormData
-    {
-        get => _pdfFormData;
-        set {
-            _pdfFormData = value;
-        }; // Include a setter if needed for updates
-    }
     public MainPage()
     {
         InitializeComponent();
-        _pdfFormData = new PdfFormData();
     }
 }

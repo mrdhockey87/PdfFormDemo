@@ -32,7 +32,7 @@ public partial class PdfViewFIlled : ContentPage
                 HouseNumber = "222B",
                 City = "New York",
                 ZipCode = "10001",
-                Country = "france",
+                SelectedCountry = "France",
                // Gender = "Male",
                 DrivingLicense = true,
                 English = true,
@@ -138,7 +138,6 @@ public partial class PdfViewFIlled : ContentPage
                 HouseNumber = "11A",
                 City = "New York",
                 ZipCode = "10001",
-                Country = "Australia",
                 //Gender = 0,
                 DrivingLicense = true,
                 English = true,
@@ -173,8 +172,7 @@ public partial class PdfViewFIlled : ContentPage
                 City = "Los Angeles",
                 ZipCode = "90001",
                 DrivingLicense = false,
-                English = true,
-                Country = "USA",
+                English = true
                 // Add other properties as needed
             };
 
