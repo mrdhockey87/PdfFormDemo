@@ -23,8 +23,12 @@ public partial class PdfFormData : ObservableObject
     private string _zipCode = "";
     [ObservableProperty]
     private string _city = "";
-    public Country? Country { get; set; }
-    public Gender? Genders { get; set; }
+    [ObservableProperty]
+    private string _country = "";
+    public CountryList? CountriesList { get; set; }
+    [ObservableProperty]
+    private string _gender = "";
+    public GenderList? GendersList { get; set; }
     [ObservableProperty]
     private string _height = "";
     [ObservableProperty]
@@ -39,12 +43,14 @@ public partial class PdfFormData : ObservableObject
     private bool _spanish = false;
     [ObservableProperty]
     private bool _latin = false;
-    public FavouriteColor? FavouriteColors { get; set; }
-    public string GetCountryString() => Country?.ToDisplayString() ?? string.Empty;
+    [ObservableProperty]
+    private string _favouriteColor = "";
+    public FavouriteColorList? FavouriteColorsList { get; set; }
+    public string GetCountryString() => CountriesList?.ToDisplayString() ?? string.Empty;
     // Selected string values for binding
-    public string GetGenderString() => Genders?.ToDisplayString() ?? string.Empty;
+    public string GetGenderString() => GendersList?.ToDisplayString() ?? string.Empty;
 
-    public string GetFavouriteColorString() => FavouriteColors?.ToDisplayString() ?? string.Empty;
+    public string GetFavouriteColorString() => FavouriteColorsList?.ToDisplayString() ?? string.Empty;
     private string _selectedCountry { set; get; }
     public string SelectedCountry
     {
@@ -52,6 +58,8 @@ public partial class PdfFormData : ObservableObject
         set
         {
             _selectedCountry = value;
+            Country = value;
+
         }
     }
     private string _selectedGender { set; get; }
@@ -61,6 +69,7 @@ public partial class PdfFormData : ObservableObject
         set
         {
             _selectedGender = value;
+            Gender = value;
         }
     }
     private string _selectedColor { set; get; }
@@ -70,10 +79,16 @@ public partial class PdfFormData : ObservableObject
         set
         {
             _selectedColor = value;
+            FavouriteColor = value;
         }
     }
 
     public PdfFormData()
     {
+    }
+    // Method to create a shallow copy
+    public PdfFormData ShallowCopy()
+    {
+        return (PdfFormData)this.MemberwiseClone();
     }
 }

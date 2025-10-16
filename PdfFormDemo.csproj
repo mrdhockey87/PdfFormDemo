@@ -40,7 +40,7 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" TintColor="#512BD4" />		<!-- TintColor -->
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -61,7 +61,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="PdfViewFIlled.xaml">
+	  <Compile Update="PdfViewFIlled.xaml.cs">
+	    <DependentUpon>PdfViewFilled.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="PdfViewFilled.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

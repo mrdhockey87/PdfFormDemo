@@ -1,19 +1,26 @@
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Storage;
 using PdfFormDemo.Models;
 using System.Diagnostics;
+using System.Threading;
 
 namespace PdfFormDemo;
 
-public partial class PdfViewFIlled : ContentPage
+public partial class PdfViewFilled : ContentPage
 {
-	private PdfFormData applicationForm;
-	public PdfViewFIlled()
-	{
-		InitializeComponent();
-		applicationForm = new PdfFormData();
-    }
-    private async void MainPage_Loaded(object? sender, EventArgs e)
+    private readonly IFileSaver fileSaver;
+    private PdfFormData PdfFormData;
+    public PdfViewFilled(PdfFormData pdfFormData)
     {
-        Debug.WriteLine("MainPage loaded");
+        InitializeComponent();
+        PdfFormData = pdfFormData;
+        // Initialize FileSaver (no DI required)
+        fileSaver = FileSaver.Default;
+
+    }
+    private async void Page_Loaded(object? sender, EventArgs e)
+    {
+        Debug.WriteLine("Page loaded");
         await Task.Delay(1000); // Longer delay to ensure UI is fully rendered
         await LoadPdfFormAsync();
     }
@@ -24,25 +31,6 @@ public partial class PdfViewFIlled : ContentPage
         {
             Debug.WriteLine("Loading PDF form");
 
-            var model = new PdfFormData
-            {
-                FirstName = "John",
-                LastName = "Doe",
-                Address1 = "123 Main St",
-                HouseNumber = "222B",
-                City = "New York",
-                ZipCode = "10001",
-                SelectedCountry = "France",
-               // Gender = "Male",
-                DrivingLicense = true,
-                English = true,
-                //FavouriteColor = "Red"  // Try exact match case
-                                    //FavouriteColor = "blue" // Try lowercase
-                                    //FavouriteColor = "BLUE" // Try uppercase
-                                    // Add other properties as needed
-            };
-
-            // Find the PDF file using multiple search paths
             string fileName = "demo_form.pdf.gz"; // Update with your actual filename
             string? pdfPath = await LocatePdfFileAsync(fileName);
 
@@ -55,7 +43,7 @@ public partial class PdfViewFIlled : ContentPage
             Debug.WriteLine($"Loading PDF from path: {pdfPath}");
 
             // Load the PDF with our model data - this will pre-fill the form
-            await FormView.LoadPdfGz(pdfPath, model);
+            await FormView.LoadPdfGz(pdfPath, PdfFormData);
 
             Debug.WriteLine("PDF loaded successfully");
         }
@@ -92,7 +80,6 @@ public partial class PdfViewFIlled : ContentPage
         // If not found in standard locations, try to copy from app resources
         try
         {
-            // Try to extract from embedded resources
             string targetPath = Path.Combine(FileSystem.CacheDirectory, fileName);
             Debug.WriteLine($"Extracting PDF to: {targetPath}");
 
@@ -110,52 +97,47 @@ public partial class PdfViewFIlled : ContentPage
 
         return null;
     }
-
-    private void OnSaveClicked(object sender, EventArgs e)
+    // not part of the codebase
+    private async void OnSaveClicked(object sender, EventArgs e)
     {
-        try
-        {
-            FormView.SaveModelData();
-            DisplayAlert("Success", "Form data saved", "OK");
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Error saving data: {ex.Message}");
-            DisplayAlert("Error", $"Failed to save data: {ex.Message}", "OK");
-        }
-    }
+        var savedPath = await FormView.SaveAsAsync(
+            async (defaultName, stream, ct) =>
+            {
+                // Ensure stream at start (safety)
+                if (stream.CanSeek) stream.Position = 0;
 
+                var result = await fileSaver.SaveAsync(defaultName, stream, ct);
+
+                if (result.IsSuccessful)
+                {
+                    await Toast.Make($"The file was saved to: {result.FilePath}").Show(ct);
+                }
+                else
+                {
+                    var msg = result.Exception?.Message ?? "Cancelled";
+                    await Toast.Make($"Save failed: {msg}").Show(ct);
+                }
+
+                return result.IsSuccessful ? result.FilePath : null;
+            },
+            formName: "EnrollmentForm");
+
+        await DisplayAlert(savedPath is not null ? "Success" : "Cancelled",
+            savedPath is not null ? $"Saved to:\n{savedPath}" : "Save was cancelled.", "OK");
+    }
     private async void OnPrintClicked(object sender, EventArgs e)
     {
         try
         {
-
-            var modelTwo = new PdfFormData
-            {
-                FirstName = "Tom",
-                LastName = "Thumb",
-                Address1 = "3223 Main St",
-                HouseNumber = "11A",
-                City = "New York",
-                ZipCode = "10001",
-                //Gender = 0,
-                DrivingLicense = true,
-                English = true,
-                //FavouriteColor = 7  // Try exact match case
-                                    //FavouriteColor = "blue" // Try lowercase
-                                    //FavouriteColor = "BLUE" // Try uppercase
-                                    // Add other properties as needed
-            };
-
-            // Update the PDF with the new data
-            await FormView.FillFormWithModelAsync(modelTwo);
-            //FormView.PrintForm();
-            DisplayAlert("Success", "Form sent to printer", "OK");
+            // Just print the currently displayed PDF
+            var ok = await FormView.PrintAsync();
+            if (!ok)
+                await DisplayAlert("Print", "No PDF available to print or the OS did not present a print/share UI.", "OK");
         }
         catch (Exception ex)
         {
             Debug.WriteLine($"Error printing: {ex.Message}");
-            DisplayAlert("Error", $"Failed to print: {ex.Message}", "OK");
+            await DisplayAlert("Error", $"Failed to print: {ex.Message}", "OK");
         }
     }
 
@@ -163,7 +145,6 @@ public partial class PdfViewFIlled : ContentPage
     {
         try
         {
-            // Example: Update the model with new data
             var updatedModel = new PdfFormData
             {
                 FirstName = "Jane",
@@ -173,17 +154,15 @@ public partial class PdfViewFIlled : ContentPage
                 ZipCode = "90001",
                 DrivingLicense = false,
                 English = true
-                // Add other properties as needed
             };
 
-            // Update the PDF with the new data
             await FormView.FillFormWithModelAsync(updatedModel);
-            DisplayAlert("Success", "Form updated", "OK");
+            await DisplayAlert("Success", "Form updated", "OK");
         }
         catch (Exception ex)
         {
             Debug.WriteLine($"Error updating form: {ex.Message}");
-            DisplayAlert("Error", $"Failed to update form: {ex.Message}", "OK");
+            await DisplayAlert("Error", $"Failed to update form: {ex.Message}", "OK");
         }
     }
 }

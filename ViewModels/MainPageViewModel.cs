@@ -1,32 +1,53 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using PdfFormDemo.Enums;
 using PdfFormDemo.Models;
+using PdfFormDemo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PdfFormDemo.Extensions;
 
 namespace PdfFormDemo.ViewModels
 {
-    public partial class MainPageViewModel : ContentPage
+    public partial class MainPageViewModel : ObservableObject
     {
 
 
         private PdfFormData _pdfFormData = new();
+
+        public IAsyncRelayCommand OpenPDFFormCommand { get; }
+
+        public MainPageViewModel()
+        {
+            OpenPDFFormCommand = new AsyncRelayCommand(OpenPDFFormCommandExecute);
+        }
+
+        private async Task OpenPDFFormCommandExecute()
+        {
+            var nav = Microsoft.Maui.Controls.Application.Current?.MainPage?.Navigation;
+            if (nav is null)
+                return;
+
+            await nav.PushAsync(new PdfViewFilled(PdfPageData));
+        }
         public PdfFormData PdfPageData
         {
             get => _pdfFormData;
             set => _pdfFormData = value;
         }
-        public ObservableCollection<string> Country { get; } = new(Enum.GetNames<Country>().Select(name =>
-                            System.Text.RegularExpressions.Regex.Replace(name, "([a-z])([A-Z])", "$1 $2")));
 
-        public ObservableCollection<string> Genders { get; } = new(Enum.GetNames<Gender>().Select(name =>
-                            System.Text.RegularExpressions.Regex.Replace(name, "([a-z])([A-Z])", "$1 $2")));
-        public ObservableCollection<string> FavouriteColors { get; } = new(Enum.GetNames<FavouriteColor>().Select(name =>
-                            System.Text.RegularExpressions.Regex.Replace(name, "([a-z])([A-Z])", "$1 $2")));
+        public ObservableCollection<string> Countries { get; } =
+            new(Enum.GetValues<CountryList>().Select(e => e.ToDisplayString()));
+
+        public ObservableCollection<string> Genders { get; } =
+            new(Enum.GetValues<GenderList>().Select(e => e.ToDisplayString()));
+
+        public ObservableCollection<string> FavouriteColors { get; } =
+            new(Enum.GetValues<FavouriteColorList>().Select(e => e.ToDisplayString()));
         private string _selectedCountry;
         public string SelectedCountry
         {
@@ -35,6 +56,7 @@ namespace PdfFormDemo.ViewModels
             {
                 _selectedCountry = value;
                 PdfPageData.SelectedCountry = value;
+                PdfPageData.Country = value;
                 OnPropertyChanged(nameof(SelectedCountry));
             }
         }
@@ -46,6 +68,7 @@ namespace PdfFormDemo.ViewModels
             {
                 _selectedGender = value;
                 PdfPageData.SelectedGender = value;
+                PdfPageData.Gender = value;
                 OnPropertyChanged(nameof(SelectedGender));
             }
         }
@@ -57,6 +80,7 @@ namespace PdfFormDemo.ViewModels
             {
                 _selectedColor = value;
                 PdfPageData.SelectedColor = value;
+                PdfPageData.FavouriteColor = value;
                 OnPropertyChanged(nameof(SelectedColor));
             }
         }

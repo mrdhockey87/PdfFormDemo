@@ -3,15 +3,15 @@ using System.ComponentModel.DataAnnotations;
 namespace PdfFormDemo.Enums
 {
 
-    public enum Gender
+    public enum GenderList
     {
-        [Display(Name = "Male")]
-        Male,
-        [Display(Name = "Female")]
-        Female
+        [Display(Name = "Man")]
+        Man,
+        [Display(Name = "Woman")]
+        Woman
     }
 
-    public enum FavouriteColor
+    public enum FavouriteColorList
     {
         [Display(Name = "Black")]
         Black,
@@ -36,7 +36,7 @@ namespace PdfFormDemo.Enums
         [Display(Name = "White")]
         White
     }
-    public enum Country
+    public enum CountryList
     {
         [Display(Name = "Austria")]
         Austria,

@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Storage;
 using Maui.PDFView;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Hosting;
@@ -22,7 +23,8 @@ namespace PdfFormDemo
             var builder = MauiApp.CreateBuilder();
             builder.UseMauiApp<App>()
                 .UseMauiPdfView()
-                .UseMauiCommunityToolkit(); // <- Write this
+                .UseMauiCommunityToolkit();
+            builder.Services.AddSingleton<IFileSaver>(FileSaver.Default);
 
 #if DEBUG
             builder.Logging.AddDebug();
