@@ -1,6 +1,7 @@
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Storage;
 using PdfFormDemo.Models;
+using PdfFormFramework.Printing;
 using System.Diagnostics;
 using System.Threading;
 
@@ -129,10 +130,19 @@ public partial class PdfViewFilled : ContentPage
     {
         try
         {
-            // Just print the currently displayed PDF
+            var pdfPath = FormView.CurrentPdfPath; // <- filled/view copy path
+            if (string.IsNullOrEmpty(pdfPath) || !File.Exists(pdfPath))
+            {
+                await DisplayAlert("Print", "No filled PDF available yet.", "OK");
+                return;
+            }
+            await PdfPrinterHelper.PrintOrEmailAsync(pdfPath);
+
+            // Or use the built-in print/share
+            /*
             var ok = await FormView.PrintAsync();
             if (!ok)
-                await DisplayAlert("Print", "No PDF available to print or the OS did not present a print/share UI.", "OK");
+                await DisplayAlert("Print", "The OS did not present a print/share UI.", "OK");*/
         }
         catch (Exception ex)
         {
