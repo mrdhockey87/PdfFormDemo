@@ -9,8 +9,7 @@
     Loaded="Page_Loaded"
     Title="PdfViewFilled">
 
-    <Grid
-        RowDefinitions="*,Auto">
+    <Grid RowDefinitions="*,Auto">
         <!-- PDF Form View -->
         <Border
             Grid.Row="0"
@@ -35,17 +34,23 @@
                 Text="Save Data"
                 TextColor="Black"
                 BackgroundColor="LightGray"
-                Clicked="OnSaveClicked" />
+                Clicked="OnSaveDataClicked" />
             <Button
-                Text="Update Form"
+                Text="Save Form"
                 TextColor="Black"
                 BackgroundColor="LightGray"
-                Clicked="OnUpdateFormClicked" />
+                Clicked="OnSaveClicked" />
             <Button
                 Text="Print"
                 TextColor="Black"
                 BackgroundColor="LightGray"
                 Clicked="OnPrintClicked" />
         </HorizontalStackLayout>
+
+        <!-- Progress overlay on top (covers both rows) -->
+        <controls:ProgressBarOverlay
+            x:Name="LoadingOverlay"
+            Grid.RowSpan="2"
+            IsVisible="False" />
     </Grid>
 </ContentPage>

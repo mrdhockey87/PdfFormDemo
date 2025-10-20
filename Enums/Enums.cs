@@ -27,8 +27,6 @@ namespace PdfFormDemo.Enums
         Green,
         [Display(Name = "Blue")]
         Blue,
-        [Display(Name = "Purple")]
-        Purple,
         [Display(Name = "Violet")]
         Violet,
         [Display(Name = "Gray")]

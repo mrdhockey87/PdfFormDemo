@@ -14,20 +14,24 @@ public partial class PdfViewFilled : ContentPage
     public PdfViewFilled(PdfFormData pdfFormData)
     {
         InitializeComponent();
+
         PdfFormData = pdfFormData;
         // Initialize FileSaver (no DI required)
         fileSaver = FileSaver.Default;
-
     }
     private async void Page_Loaded(object? sender, EventArgs e)
     {
         Debug.WriteLine("Page loaded");
-        await Task.Delay(1000); // Longer delay to ensure UI is fully rendered
+        await LoadingOverlay.ShowAsync();
+       // await Task.Delay(1000); // Longer delay to ensure UI is fully rendered
         await LoadPdfFormAsync();
     }
 
     private async Task LoadPdfFormAsync()
     {
+        Exception? error = null;
+        string? notFoundMsg = null;
+
         try
         {
             Debug.WriteLine("Loading PDF form");
@@ -37,7 +41,10 @@ public partial class PdfViewFilled : ContentPage
 
             if (pdfPath == null)
             {
-                await DisplayAlert("Error", $"Cannot find PDF file: {fileName}", "OK");
+                notFoundMsg = $"Cannot find PDF file: {fileName}";
+                await LoadingOverlay.Hide();
+                if (notFoundMsg is not null)
+                    await DisplayAlert("Error", notFoundMsg, "OK");
                 return;
             }
 
@@ -50,10 +57,17 @@ public partial class PdfViewFilled : ContentPage
         }
         catch (Exception ex)
         {
+            error = ex;
             Debug.WriteLine($"Error loading PDF: {ex.Message}");
             Debug.WriteLine(ex.StackTrace);
-            await DisplayAlert("Error", $"Failed to load PDF: {ex.Message}", "OK");
         }
+        finally
+        {
+            await LoadingOverlay.Hide();
+        }
+
+        if (error is not null)
+            await DisplayAlert("Error", $"Failed to load PDF: {error.Message}", "OK");
     }
 
     private async Task<string?> LocatePdfFileAsync(string fileName)
@@ -97,6 +111,12 @@ public partial class PdfViewFilled : ContentPage
         }
 
         return null;
+    }
+    // not part of the codebase
+    private async void OnSaveDataClicked(object sender, EventArgs e)
+    {
+        //could add logic to save form data from the form if needed
+        await DisplayAlert("Data", $"Saved Data Clicked", "OK");
     }
     // not part of the codebase
     private async void OnSaveClicked(object sender, EventArgs e)
@@ -150,7 +170,7 @@ public partial class PdfViewFilled : ContentPage
             await DisplayAlert("Error", $"Failed to print: {ex.Message}", "OK");
         }
     }
-
+    /*
     private async void OnUpdateFormClicked(object sender, EventArgs e)
     {
         try
@@ -175,4 +195,5 @@ public partial class PdfViewFilled : ContentPage
             await DisplayAlert("Error", $"Failed to update form: {ex.Message}", "OK");
         }
     }
+    */    
 }
