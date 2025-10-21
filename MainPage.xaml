@@ -304,6 +304,15 @@
                 Command="{Binding OpenPDFFormCommand}"
                 Text="Open PDF Form"
                 HorizontalOptions="Center"/>
+        <Button Grid.Row="12"
+                Grid.Column="4"
+                Grid.ColumnSpan="2"
+                FontSize="20"
+                BackgroundColor="LightGray"
+                TextColor="Black"
+                Command="{Binding OpenPDFCommand}"
+                Text="Open PDF"
+                HorizontalOptions="Center"/>
 
     </Grid>
 </ContentPage>

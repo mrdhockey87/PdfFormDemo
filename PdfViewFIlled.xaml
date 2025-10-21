@@ -25,11 +25,11 @@
         </Border>
 
         <!-- Buttons -->
-        <HorizontalStackLayout
-            Grid.Row="1"
-            Padding="10"
-            Spacing="10"
-            HorizontalOptions="Center">
+        <FlexLayout  Grid.Row="1"
+                    Padding="10"
+                    Direction="Row"
+                    HorizontalOptions="Fill"
+                    JustifyContent="SpaceEvenly">
             <Button
                 Text="Save Data"
                 TextColor="Black"
@@ -40,12 +40,18 @@
                 TextColor="Black"
                 BackgroundColor="LightGray"
                 Clicked="OnSaveClicked" />
+
+            <Button
+                Text="Email Form"
+                TextColor="Black"
+                BackgroundColor="LightGray"
+                Clicked="OnEmailFormClicked" />
             <Button
                 Text="Print"
                 TextColor="Black"
                 BackgroundColor="LightGray"
                 Clicked="OnPrintClicked" />
-        </HorizontalStackLayout>
+        </FlexLayout>
 
         <!-- Progress overlay on top (covers both rows) -->
         <controls:ProgressBarOverlay

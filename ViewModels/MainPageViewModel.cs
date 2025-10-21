@@ -20,10 +20,19 @@ namespace PdfFormDemo.ViewModels
         private PdfFormData _pdfFormData = new();
 
         public IAsyncRelayCommand OpenPDFFormCommand { get; }
-
+        public IAsyncRelayCommand OpenPDFCommand { get; }
         public MainPageViewModel()
         {
             OpenPDFFormCommand = new AsyncRelayCommand(OpenPDFFormCommandExecute);
+            OpenPDFCommand = new AsyncRelayCommand(OpenPDFCommandExecute);
+        }
+        private async Task OpenPDFCommandExecute()
+        {
+            var nav = Microsoft.Maui.Controls.Application.Current?.MainPage?.Navigation;
+            if (nav is null)
+                return;
+
+            await nav.PushAsync(new PdfViewFilled(null));
         }
 
         private async Task OpenPDFFormCommandExecute()

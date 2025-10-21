@@ -146,6 +146,11 @@ public partial class PdfViewFilled : ContentPage
         await DisplayAlert(savedPath is not null ? "Success" : "Cancelled",
             savedPath is not null ? $"Saved to:\n{savedPath}" : "Save was cancelled.", "OK");
     }
+    private async void OnEmailFormClicked(object sender, EventArgs e)
+    {
+       await PdfPrinterHelper.PromptAndEmailAsync(FormView.CurrentPdfPath);
+    }
+
     private async void OnPrintClicked(object sender, EventArgs e)
     {
         try
