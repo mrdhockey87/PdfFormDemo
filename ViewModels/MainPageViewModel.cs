@@ -28,7 +28,8 @@ namespace PdfFormDemo.ViewModels
         }
         private async Task OpenPDFCommandExecute()
         {
-            var nav = Microsoft.Maui.Controls.Application.Current?.MainPage?.Navigation;
+            var mainWindow = Microsoft.Maui.Controls.Application.Current?.Windows?.FirstOrDefault();
+            var nav = mainWindow?.Page?.Navigation;
             if (nav is null)
                 return;
 
@@ -37,7 +38,8 @@ namespace PdfFormDemo.ViewModels
 
         private async Task OpenPDFFormCommandExecute()
         {
-            var nav = Microsoft.Maui.Controls.Application.Current?.MainPage?.Navigation;
+            var mainWindow = Microsoft.Maui.Controls.Application.Current?.Windows?.FirstOrDefault();
+            var nav = mainWindow?.Page?.Navigation;
             if (nav is null)
                 return;
 

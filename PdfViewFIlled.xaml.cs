@@ -1,3 +1,4 @@
+#nullable enable
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Storage;
 using PdfFormDemo.Models;
@@ -19,7 +20,7 @@ public partial class PdfViewFilled : ContentPage
         // Initialize FileSaver (no DI required)
         fileSaver = FileSaver.Default;
     }
-    private async void Page_Loaded(object? sender, EventArgs e)
+    private async void Page_Loaded(object sender, EventArgs e)
     {
         Debug.WriteLine("Page loaded");
         await LoadingOverlay.ShowAsync();
@@ -148,6 +149,11 @@ public partial class PdfViewFilled : ContentPage
     }
     private async void OnEmailFormClicked(object sender, EventArgs e)
     {
+        if(string.IsNullOrEmpty(FormView.CurrentPdfPath) || !File.Exists(FormView.CurrentPdfPath))
+        {
+            await DisplayAlert("Email", "No filled PDF available yet.", "OK");
+            return;
+        }
        await PdfPrinterHelper.PromptAndEmailAsync(FormView.CurrentPdfPath);
     }
 
