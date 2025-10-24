@@ -99,10 +99,6 @@
               "target": "Package",
               "version": "[9.0.10, )",
               "autoReferenced": true
-            },
-            "PDFsharp": {
-              "target": "Package",
-              "version": "[6.2.2, )"
             }
           },
           "imports": [
@@ -146,10 +142,6 @@
               "target": "Package",
               "version": "[9.0.10, )",
               "autoReferenced": true
-            },
-            "PDFsharp": {
-              "target": "Package",
-              "version": "[6.2.2, )"
             }
           },
           "imports": [
@@ -193,10 +185,6 @@
               "target": "Package",
               "version": "[9.0.10, )",
               "autoReferenced": true
-            },
-            "PDFsharp": {
-              "target": "Package",
-              "version": "[6.2.2, )"
             }
           },
           "imports": [
@@ -235,10 +223,6 @@
             "Microsoft.Maui.Controls": {
               "target": "Package",
               "version": "[9.0.120, )"
-            },
-            "PDFsharp": {
-              "target": "Package",
-              "version": "[6.2.2, )"
             }
           },
           "imports": [
@@ -288,7 +272,7 @@
       }
     },
     "E:\\_MAUIProjects\\PdfFormFramework\\PdfFormFramework\\PdfFormFramework.csproj": {
-      "version": "6.2.6",
+      "version": "7.3.8",
       "restore": {
         "projectUniqueName": "E:\\_MAUIProjects\\PdfFormFramework\\PdfFormFramework\\PdfFormFramework.csproj",
         "projectName": "PdfFormFramework",

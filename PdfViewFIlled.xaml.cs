@@ -1,4 +1,5 @@
 #nullable enable
+using PdfFormFramework.Services;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Storage;
 using PdfFormDemo.Models;
@@ -11,49 +12,58 @@ namespace PdfFormDemo;
 public partial class PdfViewFilled : ContentPage
 {
     private readonly IFileSaver fileSaver;
-    private PdfFormData PdfFormData;
+    private PdfFormData? PdfFormData;          // allow null => display-only
+    private string? _incomingPath;             // path supplied by the app (.pdf or .pdf.gz)
+
     public PdfViewFilled(PdfFormData pdfFormData)
     {
         InitializeComponent();
-
         PdfFormData = pdfFormData;
-        // Initialize FileSaver (no DI required)
         fileSaver = FileSaver.Default;
     }
+
+    // New: open a PDF from the app (pass .pdf.gz or .pdf). Pass null for display-only
+    public PdfViewFilled(string appPdfPath, PdfFormData? pdfFormData = null)
+    {
+        InitializeComponent();
+        _incomingPath = appPdfPath;
+        PdfFormData = pdfFormData; // null => display-only
+        fileSaver = FileSaver.Default;
+    }
+
     private async void Page_Loaded(object sender, EventArgs e)
     {
         Debug.WriteLine("Page loaded");
         await LoadingOverlay.ShowAsync();
-       // await Task.Delay(1000); // Longer delay to ensure UI is fully rendered
         await LoadPdfFormAsync();
     }
 
     private async Task LoadPdfFormAsync()
     {
         Exception? error = null;
-        string? notFoundMsg = null;
 
         try
         {
-            Debug.WriteLine("Loading PDF form");
-
-            string fileName = "demo_form.pdf.gz"; // Update with your actual filename
-            string? pdfPath = await LocatePdfFileAsync(fileName);
-
-            if (pdfPath == null)
+            if (!string.IsNullOrWhiteSpace(_incomingPath))
             {
-                notFoundMsg = $"Cannot find PDF file: {fileName}";
-                await LoadingOverlay.Hide();
-                if (notFoundMsg is not null)
-                    await DisplayAlert("Error", notFoundMsg, "OK");
+                // Use the app-supplied file (.pdf.gz or .pdf)
+                await FormView.LoadFromAppAsync(_incomingPath, PdfFormData);
+                Debug.WriteLine("PDF loaded from app path");
                 return;
             }
 
-            Debug.WriteLine($"Loading PDF from path: {pdfPath}");
+            // Fallback: locate default resource inside the demo app
+            string fileName = "demo_form.pdf.gz";
+            string? path = await LocatePdfFileAsync(fileName);
+            if (path is null)
+            {
+                await LoadingOverlay.Hide();
+                await DisplayAlert("Error", $"Cannot find PDF file: {fileName}", "OK");
+                return;
+            }
 
-            // Load the PDF with our model data - this will pre-fill the form
-            await FormView.LoadPdfGz(pdfPath, PdfFormData);
-
+            // Model present => fill; otherwise display as-is
+            await FormView.LoadPdfGz(path, PdfFormData);
             Debug.WriteLine("PDF loaded successfully");
         }
         catch (Exception ex)
@@ -92,7 +102,6 @@ public partial class PdfViewFilled : ContentPage
                 return path;
             }
         }
-
         // If not found in standard locations, try to copy from app resources
         try
         {
@@ -180,31 +189,5 @@ public partial class PdfViewFilled : ContentPage
             Debug.WriteLine($"Error printing: {ex.Message}");
             await DisplayAlert("Error", $"Failed to print: {ex.Message}", "OK");
         }
-    }
-    /*
-    private async void OnUpdateFormClicked(object sender, EventArgs e)
-    {
-        try
-        {
-            var updatedModel = new PdfFormData
-            {
-                FirstName = "Jane",
-                LastName = "Smith",
-                Address1 = "456 Oak Ave",
-                City = "Los Angeles",
-                ZipCode = "90001",
-                DrivingLicense = false,
-                English = true
-            };
-
-            await FormView.FillFormWithModelAsync(updatedModel);
-            await DisplayAlert("Success", "Form updated", "OK");
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Error updating form: {ex.Message}");
-            await DisplayAlert("Error", $"Failed to update form: {ex.Message}", "OK");
-        }
-    }
-    */    
+    }  
 }

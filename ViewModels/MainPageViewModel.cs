@@ -16,7 +16,7 @@ namespace PdfFormDemo.ViewModels
     public partial class MainPageViewModel : ObservableObject
     {
 
-
+        private readonly string PdfFileLocal = "appdemo_form.pdf.gz";
         private PdfFormData _pdfFormData = new();
 
         public IAsyncRelayCommand OpenPDFFormCommand { get; }
@@ -33,7 +33,7 @@ namespace PdfFormDemo.ViewModels
             if (nav is null)
                 return;
 
-            await nav.PushAsync(new PdfViewFilled(null));
+            await nav.PushAsync(new PdfViewFilled(PdfFileLocal));
         }
 
         private async Task OpenPDFFormCommandExecute()
@@ -43,7 +43,7 @@ namespace PdfFormDemo.ViewModels
             if (nav is null)
                 return;
 
-            await nav.PushAsync(new PdfViewFilled(PdfPageData));
+            await nav.PushAsync(new PdfViewFilled(PdfFileLocal, PdfPageData));
         }
         public PdfFormData PdfPageData
         {

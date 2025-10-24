@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PdfFormDemo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+48cba29f0fce86810bd74616bc69e72a180f7390")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+55998aee3a5348ce019ce494095f127728cd9bde")]
 [assembly: System.Reflection.AssemblyProductAttribute("PdfFormDemo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PdfFormDemo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

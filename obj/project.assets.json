@@ -2564,7 +2564,7 @@
           }
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -5126,7 +5126,7 @@
           }
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -7688,7 +7688,7 @@
           }
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -10247,7 +10247,7 @@
           }
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -12806,7 +12806,7 @@
           }
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -15365,7 +15365,7 @@
           }
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -16060,7 +16060,7 @@
           "lib/net8.0-ios18.0/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -16723,7 +16723,7 @@
           "lib/net8.0-ios18.0/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -17386,7 +17386,7 @@
           "lib/net8.0-ios18.0/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -18054,7 +18054,7 @@
           "lib/net8.0-ios18.0/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -18722,7 +18722,7 @@
           "lib/net8.0-ios18.0/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -19385,7 +19385,7 @@
           "lib/net8.0-ios18.0/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -20060,7 +20060,7 @@
           "lib/net8.0-maccatalyst18.0/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -20723,7 +20723,7 @@
           "lib/net8.0-maccatalyst18.0/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -21386,7 +21386,7 @@
           "lib/net8.0-maccatalyst18.0/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -22049,7 +22049,7 @@
           "lib/net8.0-maccatalyst18.0/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -22715,7 +22715,7 @@
           "lib/net8.0-maccatalyst18.0/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -23378,7 +23378,7 @@
           "lib/net8.0-maccatalyst18.0/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -24421,7 +24421,7 @@
           "lib/net8.0-windows10.0.19041/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -25317,7 +25317,7 @@
           "lib/net8.0-windows10.0.19041/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -26213,7 +26213,7 @@
           "lib/net8.0-windows10.0.19041/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -27109,7 +27109,7 @@
           "lib/net8.0-windows10.0.19041/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -28005,7 +28005,7 @@
           "lib/net8.0-windows10.0.19041/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -28920,7 +28920,7 @@
           "lib/net8.0-windows10.0.19041/Maui.PDFView.dll": {}
         }
       },
-      "PdfFormFramework/6.2.6": {
+      "PdfFormFramework/7.3.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -33448,7 +33448,7 @@
         "xamarin.kotlinx.serialization.core.jvm.nuspec"
       ]
     },
-    "PdfFormFramework/6.2.6": {
+    "PdfFormFramework/7.3.8": {
       "type": "project",
       "path": "../../PdfFormFramework/PdfFormFramework/PdfFormFramework.csproj",
       "msbuildProject": "../../PdfFormFramework/PdfFormFramework/PdfFormFramework.csproj"
@@ -33460,31 +33460,27 @@
       "Microsoft.Extensions.Logging.Debug >= 9.0.10",
       "Microsoft.Maui.Controls >= 9.0.120",
       "Microsoft.NET.ILLink.Tasks >= 9.0.10",
-      "PDFsharp >= 6.2.2",
-      "PdfFormFramework >= 6.2.6"
+      "PdfFormFramework >= 7.3.8"
     ],
     "net9.0-ios26.0": [
       "CommunityToolkit.Maui >= 12.2.0",
       "Microsoft.Extensions.Logging.Debug >= 9.0.10",
       "Microsoft.Maui.Controls >= 9.0.120",
       "Microsoft.NET.ILLink.Tasks >= 9.0.10",
-      "PDFsharp >= 6.2.2",
-      "PdfFormFramework >= 6.2.6"
+      "PdfFormFramework >= 7.3.8"
     ],
     "net9.0-maccatalyst26.0": [
       "CommunityToolkit.Maui >= 12.2.0",
       "Microsoft.Extensions.Logging.Debug >= 9.0.10",
       "Microsoft.Maui.Controls >= 9.0.120",
       "Microsoft.NET.ILLink.Tasks >= 9.0.10",
-      "PDFsharp >= 6.2.2",
-      "PdfFormFramework >= 6.2.6"
+      "PdfFormFramework >= 7.3.8"
     ],
     "net9.0-windows10.0.19041": [
       "CommunityToolkit.Maui >= 12.2.0",
       "Microsoft.Extensions.Logging.Debug >= 9.0.10",
       "Microsoft.Maui.Controls >= 9.0.120",
-      "PDFsharp >= 6.2.2",
-      "PdfFormFramework >= 6.2.6"
+      "PdfFormFramework >= 7.3.8"
     ]
   },
   "packageFolders": {
@@ -33586,10 +33582,6 @@
             "target": "Package",
             "version": "[9.0.10, )",
             "autoReferenced": true
-          },
-          "PDFsharp": {
-            "target": "Package",
-            "version": "[6.2.2, )"
           }
         },
         "imports": [
@@ -33633,10 +33625,6 @@
             "target": "Package",
             "version": "[9.0.10, )",
             "autoReferenced": true
-          },
-          "PDFsharp": {
-            "target": "Package",
-            "version": "[6.2.2, )"
           }
         },
         "imports": [
@@ -33680,10 +33668,6 @@
             "target": "Package",
             "version": "[9.0.10, )",
             "autoReferenced": true
-          },
-          "PDFsharp": {
-            "target": "Package",
-            "version": "[6.2.2, )"
           }
         },
         "imports": [
@@ -33722,10 +33706,6 @@
           "Microsoft.Maui.Controls": {
             "target": "Package",
             "version": "[9.0.120, )"
-          },
-          "PDFsharp": {
-            "target": "Package",
-            "version": "[6.2.2, )"
           }
         },
         "imports": [

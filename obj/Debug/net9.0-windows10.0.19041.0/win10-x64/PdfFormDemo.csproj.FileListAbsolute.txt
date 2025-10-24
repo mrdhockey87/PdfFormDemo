@@ -212,8 +212,6 @@ E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\obj\Debug\net9.0-windows10.0.19041.0\wi
 E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
-E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\redbusyios.scale-100.gif
-E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\redbusyother.scale-100.gif
 E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.dll
 E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.Views.WinUI.Native.Projection.dll
 E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.Views.Maui.Controls.dll
@@ -225,3 +223,5 @@ E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\bin\Debug\net9.0-windows10.0.19041.0\wi
 E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\libEGL.dll
 E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\libGLESv2.dll
 E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\.winmd_cache\$SkiaSharp.Views.WinUI.Native.winmd_638932831220000000.json
+E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\frameworkredbusyios.scale-100.gif
+E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\frameworkredbusyother.scale-100.gif
