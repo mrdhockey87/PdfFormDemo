@@ -1,2 +1,0 @@
-E:\_MAUIProjects\PdfFormDemo\PdfFormDemo\PdfFormDemo.csproj;x64
-E:\_MAUIProjects\PdfFormFramework\PdfFormFramework\PdfFormFramework.csproj;neutral
